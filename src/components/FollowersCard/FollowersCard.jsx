@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import "./FollowersCard.css";
+import { useSelector } from "react-redux";
 import FollowersModal from "../FollowersModal/FollowersModal";
 import { getAllUser } from "../../api/UserRequests";
 import User from "../User/User";
-import { useSelector } from "react-redux";
+
+import "./FollowersCard.css";
+
 const FollowersCard = ({ location }) => {
   const [modalOpened, setModalOpened] = useState(false);
   const [persons, setPersons] = useState([]);
