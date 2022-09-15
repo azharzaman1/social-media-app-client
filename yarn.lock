@@ -7527,6 +7527,11 @@
   dependencies:
     "react" "^15.6.1"
 
+"react-icons@^4.4.0":
+  "integrity" "sha512-fSbvHeVYo/B5/L4VhB7sBA1i2tS8MkT0Hb9t2H1AVPkwGfVHLJCqyr2Py9dKMxsyM63Eng1GkdZfbWj+Fmv8Rg=="
+  "resolved" "https://registry.npmjs.org/react-icons/-/react-icons-4.4.0.tgz"
+  "version" "4.4.0"
+
 "react-input-emoji@^4.1.0":
   "integrity" "sha512-DaFJP6mrsh6KPfMXSNMAv05gXjSfw/j06SEx8d6cEMj8nGPzR3D4sAbSicTvvsrLppL+3v6l/eB6HfFp26tSJg=="
   "resolved" "https://registry.npmjs.org/react-input-emoji/-/react-input-emoji-4.2.0.tgz"
