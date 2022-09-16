@@ -28,7 +28,7 @@ const ProfileCard = ({ location }) => {
           }
           onError={({ currentTarget }) => {
             currentTarget.onerror = null; // prevents looping
-            currentTarget.src = BACKEND_IMAGES_BASE_URL + "defaultProfile.jpg";
+            currentTarget.src = BACKEND_IMAGES_BASE_URL + "defaultProfile.png";
           }}
           alt="ProfileImage"
         />

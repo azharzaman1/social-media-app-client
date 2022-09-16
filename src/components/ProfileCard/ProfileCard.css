@@ -22,6 +22,7 @@
 }
 .ProfileImages > img:nth-of-type(2) {
   width: 6rem;
+  height: 6rem;
   border-radius: 50%;
   position: absolute;
   bottom: -3rem;
@@ -84,14 +85,10 @@
   border-left: 2px solid var(--hrColor);
 }
 
-
-
-
-.ProfileCard>span
-{
-    font-weight: bold;
-    color: orange;
-    align-self: center;
-    margin-bottom: 1rem;
-    cursor: pointer;
+.ProfileCard > span {
+  font-weight: bold;
+  color: orange;
+  align-self: center;
+  margin-bottom: 1rem;
+  cursor: pointer;
 }
