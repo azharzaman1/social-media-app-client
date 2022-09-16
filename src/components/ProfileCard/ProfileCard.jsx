@@ -4,14 +4,10 @@ import Cover from "../../img/cover.jpg";
 import Profile from "../../img/profileImg.jpg";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { BACKEND_IMAGES_BASE_URL } from "../../config";
 const ProfileCard = ({ location }) => {
   const { user } = useSelector((state) => state.authReducer.authData);
   const posts = useSelector((state) => state.postReducer.posts);
-
-  const BACKEND_IMAGES_BASE_URL =
-    process.env.NODE_ENV === "production"
-      ? `${process.env.BACKEND_SERVER}images/`
-      : "http://localhost:5000/images/";
 
   return (
     <div className="ProfileCard">

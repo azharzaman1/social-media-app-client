@@ -5,6 +5,7 @@ import { getUser } from "../../api/UserRequests";
 import "./ChatBox.css";
 import { format } from "timeago.js";
 import InputEmoji from "react-input-emoji";
+import { BACKEND_IMAGES_BASE_URL } from "../../config";
 
 const ChatBox = ({ chat, currentUser, setSendMessage, receivedMessage }) => {
   const [userData, setUserData] = useState(null);
@@ -80,11 +81,6 @@ const ChatBox = ({ chat, currentUser, setSendMessage, receivedMessage }) => {
 
   const scroll = useRef();
   const imageRef = useRef();
-
-  const BACKEND_IMAGES_BASE_URL =
-    process.env.NODE_ENV === "production"
-      ? `${process.env.BACKEND_SERVER}images/`
-      : "http://localhost:5000/images/";
 
   return (
     <>

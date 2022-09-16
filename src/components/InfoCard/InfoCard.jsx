@@ -18,7 +18,11 @@ const InfoCard = () => {
   const handleLogOut = () => {
     dispatch(logout());
     if (user.provider === "google" || user.provider === "facebook") {
-      window.open("http://localhost:5000/auth/logout", "_self");
+      const LOGOUT_URL =
+        process.env.NODE_ENV === "production"
+          ? `${process.env.BACKEND_SERVER}/auth/logout`
+          : "http://localhost:5000/auth/logout";
+      window.open(LOGOUT_URL, "_self");
     }
   };
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { BACKEND_IMAGES_BASE_URL } from "../../config";
 import { getUser } from "../../api/UserRequests";
 const Conversation = ({ data, currentUser, online }) => {
   const [userData, setUserData] = useState(null);
@@ -20,11 +21,6 @@ const Conversation = ({ data, currentUser, online }) => {
 
     getUserData();
   }, []);
-
-  const BACKEND_IMAGES_BASE_URL =
-    process.env.NODE_ENV === "production"
-      ? `${process.env.BACKEND_SERVER}images/`
-      : "http://localhost:5000/images/";
 
   return (
     <>

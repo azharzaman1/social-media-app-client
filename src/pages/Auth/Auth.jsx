@@ -50,10 +50,20 @@ const Auth = () => {
   };
 
   const handleGoogleAuth = () => {
-    window.open("http://localhost:5000/auth/google", "_self");
+    const GOOGLE_AUTH_URL =
+      process.env.NODE_ENV === "production"
+        ? `${process.env.BACKEND_SERVER}/auth/google`
+        : "http://localhost:5000/auth/google";
+
+    window.open(GOOGLE_AUTH_URL, "_self");
   };
   const handleFacebookAuth = () => {
-    window.open("http://localhost:5000/auth/facebook", "_self");
+    const FACEBOOK_AUTH_URL =
+      process.env.NODE_ENV === "production"
+        ? `${process.env.BACKEND_SERVER}/auth/facebook`
+        : "http://localhost:5000/auth/facebook";
+
+    window.open(FACEBOOK_AUTH_URL, "_self");
   };
 
   return (

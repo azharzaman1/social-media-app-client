@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { BACKEND_IMAGES_BASE_URL } from "../../config";
 import { followUser, unfollowUser } from "../../actions/UserAction";
 const User = ({ person }) => {
   const { user } = useSelector((state) => state.authReducer.authData);
@@ -14,11 +15,6 @@ const User = ({ person }) => {
       : dispatch(followUser(person._id, user));
     setFollowing((prev) => !prev);
   };
-
-  const BACKEND_IMAGES_BASE_URL =
-    process.env.NODE_ENV === "production"
-      ? `${process.env.BACKEND_SERVER}images/`
-      : "http://localhost:5000/images/";
 
   return (
     <div className="follower">

@@ -6,6 +6,7 @@ import Heart from "../../img/like.png";
 import NotLike from "../../img/notlike.png";
 import { likePost } from "../../api/PostsRequests";
 import { useSelector } from "react-redux";
+import { BACKEND_IMAGES_BASE_URL } from "../../config";
 
 const Post = ({ data }) => {
   const { user } = useSelector((state) => state.authReducer.authData);
@@ -17,11 +18,6 @@ const Post = ({ data }) => {
     setLiked((prev) => !prev);
     liked ? setLikes((prev) => prev - 1) : setLikes((prev) => prev + 1);
   };
-
-  const BACKEND_IMAGES_BASE_URL =
-    process.env.NODE_ENV === "production"
-      ? `${process.env.BACKEND_SERVER}images/`
-      : "http://localhost:5000/images/";
 
   return (
     <div className="Post">

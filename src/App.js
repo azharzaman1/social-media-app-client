@@ -14,7 +14,12 @@ function App() {
 
   useEffect(() => {
     const getUser = () => {
-      fetch("http://localhost:5000/auth/login/success", {
+      const REQUEST_URL =
+        process.env.NODE_ENV === "production"
+          ? `${process.env.BACKEND_SERVER}/auth/login/success`
+          : "http://localhost:5000/auth/login/success";
+
+      fetch(REQUEST_URL, {
         method: "GET",
         credentials: "include",
         headers: {
