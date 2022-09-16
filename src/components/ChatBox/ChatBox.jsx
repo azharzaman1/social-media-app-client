@@ -96,6 +96,12 @@ const ChatBox = ({ chat, currentUser, setSendMessage, receivedMessage }) => {
                         : process.env.REACT_APP_PUBLIC_FOLDER +
                           "defaultProfile.png"
                     }
+                    onError={({ currentTarget }) => {
+                      currentTarget.onerror = null; // prevents looping
+                      currentTarget.src =
+                        process.env.REACT_APP_PUBLIC_FOLDER +
+                        "defaultProfile.jpg";
+                    }}
                     alt="Profile"
                     className="followerImage"
                     style={{ width: "50px", height: "50px" }}

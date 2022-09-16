@@ -67,6 +67,10 @@ const PostShare = () => {
             ? user.profilePicture
             : serverPublic + "defaultProfile.png"
         }
+        onError={({ currentTarget }) => {
+          currentTarget.onerror = null; // prevents looping
+          currentTarget.src = serverPublic + "defaultProfile.png";
+        }}
         alt="Profile"
       />
       <div>

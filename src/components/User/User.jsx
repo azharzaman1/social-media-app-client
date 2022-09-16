@@ -24,6 +24,10 @@ const User = ({ person }) => {
               ? person.profilePicture
               : publicFolder + "defaultProfile.png"
           }
+          onError={({ currentTarget }) => {
+            currentTarget.onerror = null; // prevents looping
+            currentTarget.src = publicFolder + "defaultProfile.png";
+          }}
           alt="profile"
           className="followerImage"
         />

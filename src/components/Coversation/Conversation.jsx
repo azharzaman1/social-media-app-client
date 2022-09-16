@@ -31,6 +31,11 @@ const Conversation = ({ data, currentUser, online }) => {
                 ? userData.profilePicture
                 : process.env.REACT_APP_PUBLIC_FOLDER + "defaultProfile.png"
             }
+            onError={({ currentTarget }) => {
+              currentTarget.onerror = null; // prevents looping
+              currentTarget.src =
+                process.env.REACT_APP_PUBLIC_FOLDER + "defaultProfile.png";
+            }}
             alt="Profile"
             className="followerImage"
             style={{ width: "50px", height: "50px" }}

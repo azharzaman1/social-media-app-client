@@ -28,7 +28,7 @@ const ProfileCard = ({ location }) => {
           }
           onError={({ currentTarget }) => {
             currentTarget.onerror = null; // prevents looping
-            currentTarget.src = serverPublic + "defaultCover.jpg";
+            currentTarget.src = serverPublic + "defaultProfile.jpg";
           }}
           alt="ProfileImage"
         />
