@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import axios from "axios";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -6,8 +7,13 @@ import Home from "./pages/Home";
 import Auth from "./pages/Auth/Auth";
 import Profile from "./pages/Profile/Profile";
 import Chat from "./pages/Chat/Chat";
+import { BASE_URL } from "./config";
 import "./App.css";
-import { BACKEND_SERVER } from "./config";
+
+const API = axios.create({
+  baseURL: BASE_URL,
+  withCredentials: true,
+});
 
 function App() {
   const dispatch = useDispatch();
@@ -15,27 +21,9 @@ function App() {
 
   useEffect(() => {
     const getUser = () => {
-      const REQUEST_URL =
-        process.env.NODE_ENV === "production"
-          ? `${BACKEND_SERVER}/auth/login/success`
-          : "http://localhost:5000/auth/login/success";
-
-      fetch(REQUEST_URL, {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true,
-        },
-      })
-        .then((response) => {
-          if (response.status === 200) return response.json();
-          throw new Error("authentication has been failed!");
-        })
+      API.get("/auth/login/success")
         .then((data) => {
-          dispatch({ type: "AUTH_SUCCESS", data: { user: data.user } });
-          console.log("data from login success", data);
+          dispatch({ type: "AUTH_SUCCESS", data: { user: data.data.user } });
         })
         .catch((err) => {
           console.log(err);
