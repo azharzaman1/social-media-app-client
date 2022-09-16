@@ -7,6 +7,7 @@ import Auth from "./pages/Auth/Auth";
 import Profile from "./pages/Profile/Profile";
 import Chat from "./pages/Chat/Chat";
 import "./App.css";
+import { BACKEND_SERVER } from "./config";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ function App() {
     const getUser = () => {
       const REQUEST_URL =
         process.env.NODE_ENV === "production"
-          ? `${process.env.BACKEND_SERVER}/auth/login/success`
+          ? `${BACKEND_SERVER}/auth/login/success`
           : "http://localhost:5000/auth/login/success";
 
       fetch(REQUEST_URL, {

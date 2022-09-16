@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import * as UserApi from "../../api/UserRequests.js";
 import { logout } from "../../actions/AuthActions";
+import { BACKEND_SERVER } from "../../config";
 
 const InfoCard = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const InfoCard = () => {
     if (user.provider === "google" || user.provider === "facebook") {
       const LOGOUT_URL =
         process.env.NODE_ENV === "production"
-          ? `${process.env.BACKEND_SERVER}/auth/logout`
+          ? `${BACKEND_SERVER}/auth/logout`
           : "http://localhost:5000/auth/logout";
       window.open(LOGOUT_URL, "_self");
     }

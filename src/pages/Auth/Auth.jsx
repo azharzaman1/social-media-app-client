@@ -5,6 +5,7 @@ import { logIn, signUp } from "../../actions/AuthActions.js";
 import { BsFacebook } from "react-icons/bs";
 import Logo from "../../img/logo.png";
 import "./Auth.css";
+import { BACKEND_SERVER } from "../../config/index.js";
 
 const Auth = () => {
   const initialState = {
@@ -52,7 +53,7 @@ const Auth = () => {
   const handleGoogleAuth = () => {
     const GOOGLE_AUTH_URL =
       process.env.NODE_ENV === "production"
-        ? `${process.env.BACKEND_SERVER}/auth/google`
+        ? `${BACKEND_SERVER}/auth/google`
         : "http://localhost:5000/auth/google";
 
     window.open(GOOGLE_AUTH_URL, "_self");
@@ -60,7 +61,7 @@ const Auth = () => {
   const handleFacebookAuth = () => {
     const FACEBOOK_AUTH_URL =
       process.env.NODE_ENV === "production"
-        ? `${process.env.BACKEND_SERVER}/auth/facebook`
+        ? `${BACKEND_SERVER}/auth/facebook`
         : "http://localhost:5000/auth/facebook";
 
     window.open(FACEBOOK_AUTH_URL, "_self");
