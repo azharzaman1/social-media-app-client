@@ -1,13 +1,43 @@
-import "./App.css";
+import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
 import Home from "./pages/Home";
 import Auth from "./pages/Auth/Auth";
 import Profile from "./pages/Profile/Profile";
-import { useSelector } from "react-redux";
 import Chat from "./pages/Chat/Chat";
+import "./App.css";
 
 function App() {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.authReducer.authData);
+
+  useEffect(() => {
+    const getUser = () => {
+      fetch("http://localhost:5000/auth/login/success", {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      })
+        .then((response) => {
+          if (response.status === 200) return response.json();
+          throw new Error("authentication has been failed!");
+        })
+        .then((data) => {
+          dispatch({ type: "AUTH_SUCCESS", data: { user: data.user } });
+          console.log("data from login success", data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getUser();
+  }, []);
+
   return (
     <div
       className="App"

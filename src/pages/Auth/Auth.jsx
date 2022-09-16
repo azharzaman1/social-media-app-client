@@ -49,8 +49,12 @@ const Auth = () => {
     }
   };
 
-  const handleGoogleAuth = () => {};
-  const handleFacebookAuth = () => {};
+  const handleGoogleAuth = () => {
+    window.open("http://localhost:5000/auth/google", "_self");
+  };
+  const handleFacebookAuth = () => {
+    window.open("http://localhost:5000/auth/facebook", "_self");
+  };
 
   return (
     <div className="Auth">

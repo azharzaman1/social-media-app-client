@@ -64,7 +64,7 @@ const PostShare = () => {
       <img
         src={
           user.profilePicture
-            ? serverPublic + user.profilePicture
+            ? user.profilePicture
             : serverPublic + "defaultProfile.png"
         }
         alt="Profile"
