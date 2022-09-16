@@ -14,7 +14,11 @@ const PostShare = () => {
   const loading = useSelector((state) => state.postReducer.uploading);
   const [image, setImage] = useState(null);
   const desc = useRef();
-  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  const BACKEND_IMAGES_BASE_URL =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.BACKEND_SERVER}images/`
+      : "http://localhost:5000/images/";
 
   // handle Image Change
   const onImageChange = (event) => {
@@ -65,11 +69,11 @@ const PostShare = () => {
         src={
           user.profilePicture
             ? user.profilePicture
-            : serverPublic + "defaultProfile.png"
+            : BACKEND_IMAGES_BASE_URL + "defaultProfile.png"
         }
         onError={({ currentTarget }) => {
           currentTarget.onerror = null; // prevents looping
-          currentTarget.src = serverPublic + "defaultProfile.png";
+          currentTarget.src = BACKEND_IMAGES_BASE_URL + "defaultProfile.png";
         }}
         alt="Profile"
       />

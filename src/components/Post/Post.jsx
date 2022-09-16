@@ -10,18 +10,23 @@ import { useSelector } from "react-redux";
 const Post = ({ data }) => {
   const { user } = useSelector((state) => state.authReducer.authData);
   const [liked, setLiked] = useState(data.likes.includes(user._id));
-  const [likes, setLikes] = useState(data.likes.length)
+  const [likes, setLikes] = useState(data.likes.length);
 
-  
   const handleLike = () => {
     likePost(data._id, user._id);
     setLiked((prev) => !prev);
-    liked? setLikes((prev)=>prev-1): setLikes((prev)=>prev+1)
+    liked ? setLikes((prev) => prev - 1) : setLikes((prev) => prev + 1);
   };
+
+  const BACKEND_IMAGES_BASE_URL =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.BACKEND_SERVER}images/`
+      : "http://localhost:5000/images/";
+
   return (
     <div className="Post">
       <img
-        src={data.image ? process.env.REACT_APP_PUBLIC_FOLDER + data.image : ""}
+        src={data.image ? BACKEND_IMAGES_BASE_URL + data.image : ""}
         alt=""
       />
 

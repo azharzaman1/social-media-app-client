@@ -7,7 +7,11 @@ import { useSelector } from "react-redux";
 const ProfileCard = ({ location }) => {
   const { user } = useSelector((state) => state.authReducer.authData);
   const posts = useSelector((state) => state.postReducer.posts);
-  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  const BACKEND_IMAGES_BASE_URL =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.BACKEND_SERVER}images/`
+      : "http://localhost:5000/images/";
 
   return (
     <div className="ProfileCard">
@@ -16,7 +20,7 @@ const ProfileCard = ({ location }) => {
           src={
             user?.coverPicture
               ? user.coverPicture
-              : serverPublic + "defaultCover.jpg"
+              : BACKEND_IMAGES_BASE_URL + "defaultCover.jpg"
           }
           alt="CoverImage"
         />
@@ -24,11 +28,11 @@ const ProfileCard = ({ location }) => {
           src={
             user?.profilePicture
               ? user.profilePicture
-              : serverPublic + "defaultProfile.png"
+              : BACKEND_IMAGES_BASE_URL + "defaultProfile.png"
           }
           onError={({ currentTarget }) => {
             currentTarget.onerror = null; // prevents looping
-            currentTarget.src = serverPublic + "defaultProfile.jpg";
+            currentTarget.src = BACKEND_IMAGES_BASE_URL + "defaultProfile.jpg";
           }}
           alt="ProfileImage"
         />

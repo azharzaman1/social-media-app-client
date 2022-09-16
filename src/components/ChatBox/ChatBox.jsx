@@ -80,6 +80,12 @@ const ChatBox = ({ chat, currentUser, setSendMessage, receivedMessage }) => {
 
   const scroll = useRef();
   const imageRef = useRef();
+
+  const BACKEND_IMAGES_BASE_URL =
+    process.env.NODE_ENV === "production"
+      ? `${process.env.BACKEND_SERVER}images/`
+      : "http://localhost:5000/images/";
+
   return (
     <>
       <div className="ChatBox-container">
@@ -93,14 +99,12 @@ const ChatBox = ({ chat, currentUser, setSendMessage, receivedMessage }) => {
                     src={
                       userData?.profilePicture
                         ? userData.profilePicture
-                        : process.env.REACT_APP_PUBLIC_FOLDER +
-                          "defaultProfile.png"
+                        : BACKEND_IMAGES_BASE_URL + "defaultProfile.png"
                     }
                     onError={({ currentTarget }) => {
                       currentTarget.onerror = null; // prevents looping
                       currentTarget.src =
-                        process.env.REACT_APP_PUBLIC_FOLDER +
-                        "defaultProfile.jpg";
+                        BACKEND_IMAGES_BASE_URL + "defaultProfile.jpg";
                     }}
                     alt="Profile"
                     className="followerImage"
